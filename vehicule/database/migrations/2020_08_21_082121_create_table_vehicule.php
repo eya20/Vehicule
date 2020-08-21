@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiculesTable extends Migration
+class CreateTableVehicule extends Migration
 {
     /**
      * Run the migrations.
@@ -16,9 +16,17 @@ class CreateVehiculesTable extends Migration
         Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->integer('marque');
-            $table->integer('modele');
+            $table->unsignedBigInteger('marque')->unseigned();
+            $table->unsignedBigInteger('modele')->unseigned();
             $table->timestamps();
+            $table->foreign('marque')
+            ->references('id')->on('marques')
+            ->onDelete('cascade');
+
+            $table->foreign('modele')
+            ->references('id')->on('modeles')
+            ->onDelete('cascade');
+    
         });
     }
 
