@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Vehicule;
 use App\Marque;
+use App\Modele;
 use Illuminate\Http\Request;
 
 class VehiculeController extends Controller
@@ -30,7 +31,8 @@ class VehiculeController extends Controller
     {
         
         $marques = Marque::all();
-        return view('vehicules.create',compact('marques'));
+        $modeles = Modele::all();
+        return view('vehicules.create',compact('marques','modeles'));
     }
 
      /**
@@ -62,7 +64,9 @@ class VehiculeController extends Controller
      */
     public function show(Vehicule $vehicule)
     {
-        return view('vehicules.show',compact('vehicule'));
+        $marque = Marque::find($vehicule->marque);
+        $modele = Modele::find($vehicule->modele);
+        return view('vehicules.show',compact('vehicule','marque','modele'));
     }
     
 
@@ -74,7 +78,9 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        return view('vehicules.edit',compact('vehicule'));
+        $marques = Marque::all();
+        $modeles = Modele::all();
+        return view('vehicules.edit',compact('vehicule','marques','modeles'));
     }
 
    /**
@@ -94,7 +100,7 @@ class VehiculeController extends Controller
   
         $vehicule->update($request->all());
   
-        return redirect()->route('vehicules.index')
+        return redirect()->route('vehicule.index')
                         ->with('success','Car updated successfully');
     }
 
@@ -108,7 +114,7 @@ class VehiculeController extends Controller
     {
         $vehicule->delete();
   
-        return redirect()->route('vehicules.index')
+        return redirect()->route('vehicule.index')
                         ->with('success','Car deleted successfully');
     }
 }

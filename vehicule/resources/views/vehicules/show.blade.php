@@ -21,13 +21,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Marque:</strong>
-                {{ $vehicule->marque }}
+                {{ $marque->nom }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Modéle:</strong>
-                {{ $vehicule->modele }}
+                {{ $modele->nom }}
             </div>
         </div>
     </div>

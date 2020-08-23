@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Check all cars</h2>
+                <h2>Check all Cars</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('vehicule.create') }}"> Create new car</a>
+                <a class="btn btn-success" href="{{ route('vehicule.create') }}" style="margin:12px"> Create new car</a>
             </div>
         </div>
     </div>
@@ -20,17 +20,14 @@
    
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
-            <th>Title</th>
-            <th>Description</th>
+            <th>#</th>
+            <th>Nom</th>
             <th width="250px">Action</th>
         </tr>
         @foreach ($vehicules as $vehicule)
         <tr>
-            <td>{{ ++$i }}</td>
+            <td>{{ $vehicule->id }}</td>
             <td>{{ $vehicule->nom }}</td>
-            <td>{{ $vehicule->marque }}</td>
-            <td>{{ $vehicule->modele }}</td>
             <td>
                 <form action="{{ route('vehicule.destroy',$vehicule->id) }}" method="POST">
    

@@ -6,14 +6,13 @@
 </head>
 <body>
 <div class="jumbotron text-center">
-  <h1>Véhicules</h1>
+  <h1>Cars</h1>
 </div>
   
 <div class="container">
     @yield('content')
 </div>
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
 </div>
 </body>
 </html>

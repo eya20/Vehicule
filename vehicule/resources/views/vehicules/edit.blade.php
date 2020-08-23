@@ -28,25 +28,33 @@
         @method('PUT')
    
          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
                     <strong>Name:</strong>
                     <input type="text" name="nom" value="{{ $vehicule->nom }}" class="form-control" placeholder="Title">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
                     <strong>Marque:</strong>
-                    <input class="form-control" style="" name="marque" value="{{ $vehicule->marque }}" placeholder="" />
+                    <select name="marque"  class="form-control">
+                    @foreach ($marques as $marque)
+                        <option value="{{ $marque->id }}">{{ $marque->nom }}</option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
                     <strong>Modéle:</strong>
-                    <input class="form-control" style="" name="modele" value="{{ $vehicule->marque }}" placeholder="" />
+                    <select name="modele"  class="form-control">
+                    @foreach ($modeles as $modele)
+                        <option value="{{ $modele->id }}">{{ $modele->nom }}</option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="col-xs-8 col-sm-8 col-md-8 text-center" style="margin:12px">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>

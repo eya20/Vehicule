@@ -26,29 +26,33 @@
 <form action="{{ route('vehicule.store') }}" method="POST">
     @csrf
      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <strong>Name:</strong>
                 <input type="text" name="nom" class="form-control" placeholder="">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <strong>Marque:</strong>
                 <select name="marque"  class="form-control">
                 @foreach ($marques as $marque)
-                    <option value="{{ $marque->id }}">{{ $instructor->nom }}</option>
+                    <option value="{{ $marque->id }}">{{ $marque->nom }}</option>
                 @endforeach
                 </select>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <strong>Modéle:</strong>
-                <input class="form-control" style="" name="modele" placeholder="" />
+                <select name="modele"  class="form-control">
+                @foreach ($modeles as $modele)
+                    <option value="{{ $modele->id }}">{{ $modele->nom }}</option>
+                @endforeach
+                </select>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <div class="col-xs-8 col-sm-8 col-md-8 text-center" style="margin:12px">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>

@@ -8,7 +8,7 @@ class Vehicule extends Model
 {
     protected $table = "vehicules";
 
-    protected $fillabes = ['nom','marque','modele'];
+    protected $fillable = ['nom','marque','modele'];
 
     public function marque(){
 
