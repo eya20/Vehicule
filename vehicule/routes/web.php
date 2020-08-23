@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/vehicules','VehiculeController@index');
 Route::resource('vehicule', 'VehiculeController');
 Route::resource('marque', 'MarqueController');
 Route::resource('modele', 'ModeleController');
