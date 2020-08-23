@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Marque;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MarqueController extends Controller
 {
@@ -13,6 +15,8 @@ class MarqueController extends Controller
      */
     public function index()
     {
+        $marques = Marque::all();
+        return view('marques.index',compact('marques'));
         //
     }
 
@@ -23,7 +27,7 @@ class MarqueController extends Controller
      */
     public function create()
     {
-        //
+        return view('marques.create');
     }
 
     /**
@@ -34,51 +38,69 @@ class MarqueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+        ]);
+  
+        Marque::create($request->all());
+   
+        return redirect()->route('marque.index')
+                        ->with('success','mark created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Marque  $marque
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Marque $marque)
     {
-        //
+        $vehicules = DB::table('vehicules')->where('marque', $marque->id)->get();
+        return view('marques.show',compact('vehicules','marque'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     *  @param  \App\Marque  $marque
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Marque $marque)
     {
-        //
+        return view('marques.edit',compact('marque'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Marque  $marque
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Marque  $marque)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+        ]);
+  
+        $marque->update($request->all());
+  
+        return redirect()->route('marque.index')
+                        ->with('success','mark updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Marque  $marque
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Marque  $marque)
     {
-        //
+        $marque->delete();
+  
+        return redirect()->route('marque.index')
+                        ->with('success','mark deleted successfully');
     }
 }

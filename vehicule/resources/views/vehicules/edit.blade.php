@@ -31,7 +31,7 @@
             <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="nom" value="{{ $vehicule->nom }}" class="form-control" placeholder="Title">
+                    <input type="text" name="nom" value="{{ $vehicule->nom }}" class="form-control" placeholder="">
                 </div>
             </div>
             <div class="col-xs-8 col-sm-8 col-md-8">

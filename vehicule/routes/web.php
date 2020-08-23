@@ -19,5 +19,5 @@ Route::get('/', function () {
 
 Route::get('/vehicules','VehiculeController@index');
 Route::resource('vehicule', 'VehiculeController');
-Route::resource('marques', 'MarqueController');
-Route::resource('modeles', 'ModeleController');
+Route::resource('marque', 'MarqueController');
+Route::resource('modele', 'ModeleController');
