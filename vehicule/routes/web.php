@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('vehicules', 'VehiculeController');
+
+Route::get('/vehicules','VehiculeController@index');
+Route::resource('vehicule', 'VehiculeController');
 Route::resource('marques', 'MarqueController');
 Route::resource('modeles', 'ModeleController');

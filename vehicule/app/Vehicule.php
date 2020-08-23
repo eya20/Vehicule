@@ -8,6 +8,8 @@ class Vehicule extends Model
 {
     protected $table = "vehicules";
 
+    protected $fillabes = ['nom','marque','modele'];
+
     public function marque(){
 
         return $this->belongsTo(Marque::class);
